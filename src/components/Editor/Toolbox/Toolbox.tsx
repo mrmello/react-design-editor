@@ -9,9 +9,7 @@ function Toolbox() {
   if (!activeObject) {
     return <DefaultToolbox />
   }
-  const activeObjectType = activeObject.type
-
-  return <div>{activeObjectType === 'textbox' ? <TextToolbox /> : <DefaultToolbox />}</div>
+  return <div><TextToolbox /><DefaultToolbox /></div>
 }
 
 export default Toolbox

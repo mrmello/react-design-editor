@@ -8,8 +8,8 @@ export const CanvasObjects = {
     },
   },
   image: {
-    render: options => {
-      return new fabric.Image()
+    render: (options, cb) => {
+      return fabric.Image.fromURL(options.src, cb)
     },
   },
 }

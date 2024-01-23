@@ -3,6 +3,7 @@ import { CSSProperties, useState } from 'react'
 import { TwitterPicker } from 'react-color'
 import emptyColorPlaceholder from '@/assets/images/base-color-picker.png'
 import './DefaultToobox.scss'
+import { useCanvasContext } from '@/components/Canvas/hooks'
 // import './Toolbox.css'
 
 function VerticalSeparator() {
@@ -17,6 +18,8 @@ function Toolbox() {
     backgroundColor: '#ffffff',
   })
   const { setCanvasBackgroundColor } = useCoreHandler()
+  const { setProperty } = useCoreHandler()
+  const { activeObject } = useCanvasContext()
 
   const handleClick = () => {
     setDropdown({ ...dropdown, displayColorPicker: !dropdown.displayColorPicker })
@@ -38,8 +41,12 @@ function Toolbox() {
   }
 
   const onColorChange = color => {
-    setCanvasBackgroundColor(color.hex)
-    setOptions({ ...options, backgroundColor: color.hex })
+    if (!activeObject) {
+      setCanvasBackgroundColor(color.hex)
+      setOptions({ ...options, backgroundColor: color.hex })
+    } else {
+      setProperty('fill', color.hex)
+    }
   }
   return (
     <div className="editor-toolbox-container">

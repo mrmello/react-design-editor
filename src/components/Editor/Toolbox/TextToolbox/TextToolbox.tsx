@@ -9,8 +9,8 @@ import { useCoreHandler } from '@/components/Canvas/handlers'
 const fontsList = ['Open Sans', 'Lexend', 'Comic Neue', 'Patrick Hand']
 
 function TextTool() {
-  const { activeObject } = useCanvasContext()
-  const { setProperty } = useCoreHandler()
+  // const { activeObject } = useCanvasContext()
+  const { setProperty, removeObject } = useCoreHandler()
   const [options, setOptions] = useState({
     fontFamily: 'Lexend',
     fontSize: 1,
@@ -19,21 +19,26 @@ function TextTool() {
     textDecoration: 'none',
   })
 
-  useEffect(() => {
-    if (activeObject) {
-      const updatedOptions = {
-        fontFamily: activeObject.fontFamily,
-        fontSize: activeObject.fontSize,
-        fontWeight: activeObject.fontWeight,
-        textAlign: activeObject.textAlign,
-      }
-      setOptions({ ...options, ...updatedOptions })
-    }
-  }, [activeObject])
+  // useEffect(() => {
+  //   if (activeObject) {
+  //     const updatedOptions = {
+  //       fontFamily: activeObject.fontFamily,
+  //       fontSize: activeObject.fontSize,
+  //       fontWeight: activeObject.fontWeight,
+  //       textAlign: activeObject.textAlign,
+  //     }
+  //     setOptions({ ...options, ...updatedOptions })
+  //   }
+  // }, [activeObject])
 
   const onChangeFontFamily = fontFamily => {
     setProperty('fontFamily', fontFamily)
-    setOptions({ ...options, fontFamily })
+    setProperty('fontSize', 42)
+    // setOptions({ ...options, fontFamily })
+  }
+
+  const handleRemoveObject = () => {
+    removeObject()
   }
 
   return (
@@ -65,7 +70,9 @@ function TextTool() {
         </div>
         <div className="section-two">
           <OpacityIcon />
+          <div onClick={handleRemoveObject}>
           <DeleteIcon />
+          </div>
         </div>
       </div>
     </div>

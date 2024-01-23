@@ -17,28 +17,29 @@ function Canvas() {
   useEventsHandler()
   useZoomHandler()
   useEffect(() => {
-    const initialHeigh = containerRef.current.clientHeight
-    const initialWidth = containerRef.current.clientWidth
+    const initialHeigh = 600
+    const initialWidth = 900
 
     const canvas = new fabric.Canvas('canvas', {
       backgroundColor: '#ecf0f1',
       height: initialHeigh,
       width: initialWidth,
+      preserveObjectStacking: true
     })
 
     setCanvas(canvas)
-    const workarea = new fabric.Rect({
-      //@ts-ignore
-      id: 'workarea',
-      width: 600,
-      height: 400,
-      absolutePositioned: true,
-      fill: '#ffffff',
-      selectable: false,
-      hoverCursor: 'default',
-    })
-    canvas.add(workarea)
-    workarea.center()
+  //   const workarea = new fabric.Rect({
+  //     //@ts-ignore
+  //     id: 'workarea',
+  //     width: 600,
+  //     height: 400,
+  //     absolutePositioned: true,
+  //     fill: '#ffffff',
+  //     selectable: false,
+  //     hoverCursor: 'default',
+  //   })
+  //   canvas.add(workarea)
+  //   workarea.center()
   }, [])
   return (
     <div className="editor-canvas" ref={containerRef}>
