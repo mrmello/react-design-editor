@@ -39,7 +39,7 @@ const template = {
       "cropX": 0,
       "cropY": 0,
       "src": "http://fabricjs.com/assets/pug.jpg",
-      "crossOrigin": null,
+      "crossOrigin": "anonymous",
       "filters": []
     },
     {
@@ -169,7 +169,7 @@ const template2 = {
       "cropX": 0,
       "cropY": 0,
       "src": "http://fabricjs.com/assets/pug.jpg",
-      "crossOrigin": null,
+      "crossOrigin": "anonymous",
       "filters": []
     },
     {

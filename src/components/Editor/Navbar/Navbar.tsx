@@ -19,12 +19,19 @@ function Navbar() {
     downloadURI(canvas.toDataURL({ format: 'png' }), 'cavanstest.png')
   }
 
+  const saveAsJSON = () => {
+    console.log(canvas.toJSON())
+  }
+
   return (
     <div className="navbar">
       <div className="navbar-left">
         <LogoIcon />
       </div>
       <div className="navbar-action-items">
+      <div onClick={saveAsJSON}>
+          <DownloadIcon />
+        </div>
         <div onClick={download}>
           <DownloadIcon />
         </div>
